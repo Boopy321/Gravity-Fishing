@@ -7,43 +7,73 @@ using System.Collections.Generic;
 public class BlackHole : MonoBehaviour {
 
 	public PointEffector2D m_gravity;
-	//public GameObject Hook;
+
 	public ParticleSystem m_particles;
 
-	Blackhole m_object;
-	bool m_Force;
-	bool m_dead;
+
+	//public GameObject m_object;
+	public GameObject m_hook;
+
+	public float min_radius;
+	public float mid_radius;
+	public float max_radius;
+
+	public float m_forceweak;
+	public float m_forcemoderate;
+	public float m_forceStrong;
+
+	public float Distance;
+
+	public bool m_Force;
+	public bool m_dead;
+
+	public int timer;
+
+	private Vector3 Direction;
 
 	void Awake()
 	{
-		m_object.radius = 20.0f;
-		m_object.timer = 10;
-	}
+		transform.Rotate (new Vector3 (-90, 0, 0));
+		m_hook = GameObject.FindGameObjectWithTag("Hook");
+		min_radius = 1.0f;
+		mid_radius = 1.50f;
+		max_radius = 10.0f;
 
+		m_forceweak = 0.2f;
+		m_forcemoderate = 0.40f;
+		m_forceStrong = 0.60f;
+
+	}
+	
 	// Update is called once per frame
 	void Update () 
 	{		
+		//m_object.
+		float Distance = Vector3.Distance (gameObject.transform.position, m_hook.transform.position);
+		if (Distance < 0.8f) {
+		}
+		else if (Distance < min_radius) {
+			ApplyForce (m_hook, m_forceStrong);
+		} else if (Distance < mid_radius) {
+			ApplyForce (m_hook, m_forcemoderate);
+		} else if (Distance < max_radius) {
+			ApplyForce (m_hook, m_forceweak);
+		} else {
+			m_Force = false;
+		}
+		//if(m_Force)
 
-		transform.Rotate (new Vector3 (0, 5, 0));
-		/* BROKEN CODE
-		 * float distance = Vector3.Distance(Hook.gameObject.transform.position,m_object.blackhole.transform.position); 
-			//Apply Gravity to Objects within the Radius
-			if(distance < m_object.radius)
-			{
-				ApplyForce(Hook);
-			}
-		*/
-			//Delete Blackholes after time
-			//if(m_objects[i].timer <= 0)
-			//{
-			//	Destroy(m_objects[i].blackhole)
-			//}
 	}
 
-	void ApplyForce(GameObject a_object)
+	bool ApplyForce(GameObject a_object,float a_force)
 	{
-		//Adjust the object position to give it a pull effect to 
+		Direction = (gameObject.transform.position - m_hook.transform.position).normalized;
+		Direction = Direction * a_force;
+	//Expermint
+		//Vector3 slerp = Vector3.Slerp(Direction, m_hook.transform.position, 40.0f);
 
+          m_hook.transform.Translate(Direction);
+		return true;
 	}
 		
 }

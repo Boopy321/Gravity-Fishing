@@ -24,6 +24,7 @@ ModelImporter:
     4300000: BackHoleMesh
     7400000: Take 001
     9500000: //RootNode
+    11100000: //RootNode
     13700000: BackHoleMesh
   materials:
     importMaterials: 1
@@ -38,7 +39,7 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
@@ -78,7 +79,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
