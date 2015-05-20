@@ -30,7 +30,8 @@ public class BlackHole : MonoBehaviour {
 	public int timer;
 
 	private Vector3 Direction;
-
+	private Vector3 Velocity;
+	public Vector3 ForceDir;
 	void Awake()
 	{
 		transform.Rotate (new Vector3 (-90, 0, 0));
@@ -43,11 +44,22 @@ public class BlackHole : MonoBehaviour {
 		m_forcemoderate = 0.40f;
 		m_forceStrong = 0.60f;
 
+		Velocity = new Vector3 (0, 0, 0);
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{		
+	{	
+
+		
+		m_hook.transform.Translate(Velocity * Time.deltaTime);
+
+		//Vector3 direction = gameObject.transform.position - m_hook.transform.position;
+		//direction.Normalize();
+
+
+
 		//m_object.
 		float Distance = Vector3.Distance (gameObject.transform.position, m_hook.transform.position);
 		if (Distance < 0.8f) {
@@ -65,6 +77,13 @@ public class BlackHole : MonoBehaviour {
 
 	}
 
+	void OnDrawGizmos()
+	{
+		if (m_hook) {
+			Gizmos.DrawLine (m_hook.transform.position, m_hook.transform.position + (10 * ForceDir));
+		}
+	}
+
 	bool ApplyForce(GameObject a_object,float a_force)
 	{
 		Direction = (gameObject.transform.position - m_hook.transform.position).normalized;
@@ -72,7 +91,9 @@ public class BlackHole : MonoBehaviour {
 	//Expermint
 		//Vector3 slerp = Vector3.Slerp(Direction, m_hook.transform.position, 40.0f);
 
-          m_hook.transform.Translate(Direction);
+		ForceDir = Direction.normalized;
+
+		Velocity = a_force * Direction * Time.deltaTime;
 		return true;
 	}
 		

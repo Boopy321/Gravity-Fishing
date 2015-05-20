@@ -14,12 +14,9 @@ public class GameManager : MonoBehaviour {
 
 	//Click Depth
 	float zdepth= 30.0f;
-
-	 
-
+	
 	List<GameObject> m_objects;
-
-
+	
 	void Awake () {
 	
 		//Screen.orientation = ScreenOrientation.Landscape;
@@ -28,14 +25,14 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		m_objects = new List<GameObject> ();
+
 		m_blackhole = GameObject.FindGameObjectWithTag("BlackHole");
 		//REMOVE ON GAME BUILDS, IN FOR TESTING
 		m_objects.Add (m_blackhole);
 
-		
 		Hook = GameObject.FindGameObjectWithTag("Hook");
-
 	}
 	
 	void Update () 
