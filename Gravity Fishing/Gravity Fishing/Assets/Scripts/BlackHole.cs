@@ -9,8 +9,6 @@ public class BlackHole : MonoBehaviour {
 	public PointEffector2D m_gravity;
 
 	public ParticleSystem m_particles;
-
-
 	//public GameObject m_object;
 	public GameObject m_hook;
 
@@ -40,9 +38,9 @@ public class BlackHole : MonoBehaviour {
 		mid_radius = 1.50f;
 		max_radius = 10.0f;
 
-		m_forceweak = 0.2f;
-		m_forcemoderate = 0.40f;
-		m_forceStrong = 0.60f;
+		m_forceweak = 4.2f;
+		m_forcemoderate = 1.40f;
+		m_forceStrong = 4.60f;
 
 		Velocity = new Vector3 (0, 0, 0);
 
@@ -51,30 +49,22 @@ public class BlackHole : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{	
-
-		
-		m_hook.transform.Translate(Velocity * Time.deltaTime);
-
+		//m_hook.transform.Translate(Velocity * Time.deltaTime);
 		//Vector3 direction = gameObject.transform.position - m_hook.transform.position;
 		//direction.Normalize();
-
-
-
 		//m_object.
-		float Distance = Vector3.Distance (gameObject.transform.position, m_hook.transform.position);
+		float Distance = Vector3.Distance(gameObject.transform.position, m_hook.transform.position);
 		if (Distance < 0.8f) {
 		}
 		else if (Distance < min_radius) {
-			ApplyForce (m_hook, m_forceStrong);
+			ApplyForce ( m_forceStrong);
 		} else if (Distance < mid_radius) {
-			ApplyForce (m_hook, m_forcemoderate);
+			ApplyForce (m_forcemoderate);
 		} else if (Distance < max_radius) {
-			ApplyForce (m_hook, m_forceweak);
+			ApplyForce (m_forceweak);
 		} else {
 			m_Force = false;
 		}
-		//if(m_Force)
-
 	}
 
 	void OnDrawGizmos()
@@ -84,17 +74,20 @@ public class BlackHole : MonoBehaviour {
 		}
 	}
 
-	bool ApplyForce(GameObject a_object,float a_force)
+	bool ApplyForce(float a_force)
 	{
+
 		Direction = (gameObject.transform.position - m_hook.transform.position).normalized;
 		Direction = Direction * a_force;
-	//Expermint
-		//Vector3 slerp = Vector3.Slerp(Direction, m_hook.transform.position, 40.0f);
 
 		ForceDir = Direction.normalized;
 
 		Velocity = a_force * Direction * Time.deltaTime;
 		return true;
 	}
-		
+
+	public Vector3 ReturnCurrentForce()
+	{
+		return m_forceweak * ForceDir;
+	}
 }

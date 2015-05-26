@@ -1,22 +1,13 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BlackHole.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\BlackHole.cs" Line="69" Column="38" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="45" Column="1" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HookScript.cs">
-    <Files>
-      <File FileName="Assets\Scripts\HookScript.cs" Line="53" Column="5" />
->>>>>>> a64e5773d9e10a5b7edf0d76308632704681aff7
+      <File FileName="Assets\Scripts\BlackHole.cs" Line="88" Column="2" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="40" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\jason.butterfield\Documents\Gravity-Fishing\Gravity Fishing\Gravity Fishing\Assets\Scripts\BlackHole.cs" line="89" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

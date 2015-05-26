@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class GameManager : MonoBehaviour {
 
 	public PointEffector2D m_gravity; // Useless at the moment
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour {
 
 		m_blackhole = GameObject.FindGameObjectWithTag("BlackHole");
 		//REMOVE ON GAME BUILDS, IN FOR TESTING
-		m_objects.Add (m_blackhole);
+		//m_objects.Add (m_blackhole);
 
 		Hook = GameObject.FindGameObjectWithTag("Hook");
 	}
@@ -38,37 +39,34 @@ public class GameManager : MonoBehaviour {
 	void Update () 
 	{
 
-		//Sphere collider to apply Gravity or not. 
-
-		if(Input.GetMouseButtonDown(0))
-	    {
+		// Clone Blackholes
+		if (Input.GetMouseButtonDown (0)) 
+		{
 			print ("Click");
+		
+			BlackHole clone;
 
-			GameObject clone;
-			//Debug.Log (Input.mousePosition);
-			//Broken Stuff. 
-			Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zdepth));
-			//pos *= (distance);
-			//Debug.Log (pos);
-			//pos.z = 1;
-			//Clones a blackhole object to worldspace
-			clone = Instantiate(m_blackhole,pos,new Quaternion()) as GameObject;
-			m_objects.Add(clone);
 
+			//Vector3 pos = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, zdepth));
+			//
+			//clone.gameObject = Instantiate (m_blackhole, pos, new Quaternion ()) as GameObject;
+			//m_objects.Add (clone);
 		};
+	
 
 		//Test Distances
-		if(Input.GetKey(KeyCode.Space))
-	   	{
-			for( int a = 0; a < m_objects.Count; a++)
-			{
-				float Distance = Vector3.Distance (m_objects[a].transform.position, Hook.transform.position);
-				print("Distance to other: " + Distance);
+		if (Input.GetKey (KeyCode.Space)) {
+			for (int a = 0; a < m_objects.Count; a++) {
+				float Distance = Vector3.Distance (m_objects [a].transform.position, Hook.transform.position);
+				print ("Distance to other: " + Distance);
 			}
 		}
 
-
-
+		for (int i = 0; i < m_objects.Count; i++) 
+		{
+			//Get all of the force directions and then normalize it
+		//	m_objects[i].ReturnCurrentForce();
+		}
 	}	
 	
 }
