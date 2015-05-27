@@ -33,7 +33,7 @@ public class BlackHole : MonoBehaviour {
 
 	void Awake()
 	{
-		transform.Rotate (new Vector3 (-90, 0, 0));
+
 		m_hook = GameObject.FindGameObjectWithTag("Hook");
 		min_radius = 1.0f;
 		mid_radius = 1.50f;

@@ -41,7 +41,7 @@ GameObject:
   - 95: {fileID: 9562494}
   - 114: {fileID: 11484526}
   m_Layer: 0
-  m_Name: BlackHole
+  m_Name: Blackhole
   m_TagString: BlackHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

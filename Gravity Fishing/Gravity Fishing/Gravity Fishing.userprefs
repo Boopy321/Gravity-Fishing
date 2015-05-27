@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gamestate.cs">
     <Files>
-      <File FileName="Assets\Scripts\BlackHole.cs" Line="88" Column="2" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\Gamestate.cs" Line="15" Column="7" />
+      <File FileName="Assets\Scripts\GameStateManager.cs" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\MenuScene.cs" Line="6" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
