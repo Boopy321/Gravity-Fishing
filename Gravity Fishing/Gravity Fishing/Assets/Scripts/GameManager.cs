@@ -8,15 +8,16 @@ public class GameManager : MonoBehaviour {
 	public PointEffector2D m_gravity; // Useless at the moment
 	public GameObject Hook; //Game Hook
 	public ParticleSystem m_particles; //Later on Particle
+	public GameObject BlackholePrefab;
+	public BlackHole blackhole;
+	public Vector3 Velocity;
 
-	public BlackHole Blackhole;
 
-	public GameObject m_blackhole;
-
-	//Click Depth
 	float zdepth= 30.0f;
-	
-	List<GameObject> m_objects;
+
+	List<Vector3> applyForcelist;
+	List<BlackHole> m_objects;
+
 	
 	void Awake () {
 	
@@ -26,47 +27,42 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		m_objects = new List<GameObject> ();
-
-		m_blackhole = GameObject.FindGameObjectWithTag("BlackHole");
-		//REMOVE ON GAME BUILDS, IN FOR TESTING
-		//m_objects.Add (m_blackhole);
+		//Blackhole list
+		m_objects = new List<BlackHole> ();
+		// Force List from the blackholes
+		applyForcelist = new List<Vector3> ();
+		//Velocity = Vector3 (1, 1, 1);
+	
+		var blackholeobject = new GameObject ("Blackhole");
+		blackhole = blackholeobject.AddComponent<BlackHole> ();;
+		m_objects.Add (blackhole);
 
 		Hook = GameObject.FindGameObjectWithTag("Hook");
 	}
 	
 	void Update () 
 	{
-
+		//Hook.transform.Translate(Velocity * Time.deltaTime);
 		// Clone Blackholes
 		if (Input.GetMouseButtonDown (0)) 
 		{
 			print ("Click");
-		
-			BlackHole clone;
 
+			Vector3 pos = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, zdepth));
+			//var blackholeobject = new GameObject ("Blackhole" + m_objects.Count);
+			var clone = Instantiate (BlackholePrefab, pos, new Quaternion ()) as GameObject;
+			if(clone.GetComponent<BlackHole>() == null)
+			{
+				Debug.Log("Clone is Null");
 
-			//Vector3 pos = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, zdepth));
-			//
-			//clone.gameObject = Instantiate (m_blackhole, pos, new Quaternion ()) as GameObject;
-			//m_objects.Add (clone);
-		};
-	
-
-		//Test Distances
-		if (Input.GetKey (KeyCode.Space)) {
-			for (int a = 0; a < m_objects.Count; a++) {
-				float Distance = Vector3.Distance (m_objects [a].transform.position, Hook.transform.position);
-				print ("Distance to other: " + Distance);
 			}
-		}
+			else
+			{
+				m_objects.Add(clone.GetComponent<BlackHole>());
+			}
 
-		for (int i = 0; i < m_objects.Count; i++) 
-		{
-			//Get all of the force directions and then normalize it
-		//	m_objects[i].ReturnCurrentForce();
-		}
+		};
+	 
 	}	
 	
 }

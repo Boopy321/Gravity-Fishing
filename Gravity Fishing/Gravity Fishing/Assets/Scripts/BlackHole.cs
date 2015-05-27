@@ -30,6 +30,7 @@ public class BlackHole : MonoBehaviour {
 	private Vector3 Direction;
 	private Vector3 Velocity;
 	public Vector3 ForceDir;
+
 	void Awake()
 	{
 		transform.Rotate (new Vector3 (-90, 0, 0));
@@ -39,7 +40,7 @@ public class BlackHole : MonoBehaviour {
 		max_radius = 10.0f;
 
 		m_forceweak = 4.2f;
-		m_forcemoderate = 1.40f;
+		m_forcemoderate = 4.40f;
 		m_forceStrong = 4.60f;
 
 		Velocity = new Vector3 (0, 0, 0);
@@ -63,7 +64,7 @@ public class BlackHole : MonoBehaviour {
 		} else if (Distance < max_radius) {
 			ApplyForce (m_forceweak);
 		} else {
-			m_Force = false;
+			m_Force = false;  
 		}
 	}
 
@@ -82,12 +83,12 @@ public class BlackHole : MonoBehaviour {
 
 		ForceDir = Direction.normalized;
 
-		Velocity = a_force * Direction * Time.deltaTime;
+		//Velocity = a_force * Direction * Time.deltaTime;
 		return true;
 	}
 
 	public Vector3 ReturnCurrentForce()
 	{
-		return m_forceweak * ForceDir;
+		return ForceDir* m_forceweak;
 	}
 }
