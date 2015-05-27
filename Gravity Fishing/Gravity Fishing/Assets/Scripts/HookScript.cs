@@ -5,35 +5,21 @@ using System.Collections.Generic;
 public class HookScript : MonoBehaviour 
 {
 	public bool wasPressed;
-	public List<Transform> planets;
+	public Transform planet;
 	Vector3 planetAverage;
+
+	void Start()
+	{
+		Time.timeScale = 1;
+		GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2(-100f, 0), ForceMode2D.Impulse);
+	}
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.CompareTag ("Planet")) 
 		{
-			planets.Add(other.transform);
-			UpdateAverage();
+			planet = other.transform;
 		}
-	}
-	
-	void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.CompareTag ("Planet")) 
-		{
-			planets.Remove(other.transform);
-			UpdateAverage();
-		}
-	}
-	
-	void UpdateAverage ()
-	{
-		planetAverage = new Vector3(0,0,0);
-		foreach(Transform planet in planets)
-		{
-			planetAverage += planet.position;
-		}
-		planetAverage = planetAverage / (planets.Count);
 	}
 	
 	// Update is called once per frame
@@ -43,13 +29,16 @@ public class HookScript : MonoBehaviour
 		{
 			wasPressed = true;
 		}
+	}
 
+	void FixedUpdate()
+	{
+		if (planet != null) 
+		{
+			Vector3 temp = (planet.position - transform.position).normalized;
+			float angle = Mathf.Atan2(temp.x, temp.y) * Mathf.Rad2Deg;
+			GetComponent<Rigidbody2D>().MoveRotation(-angle);
 
-		//if (wasPressed == true) 
-		//{
-			//GetComponent<Rigidbody2D>().isKinematic = false;
-		//}
-
-		//transform.up = (transform.position - planetAverage).normalized;
+		}
 	}
 }
