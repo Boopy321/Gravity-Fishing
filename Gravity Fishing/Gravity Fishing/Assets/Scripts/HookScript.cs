@@ -11,8 +11,8 @@ public class HookScript : MonoBehaviour
 	void Start()
 	{
 		Time.timeScale = 1;
-		GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2(-100f, 0), ForceMode2D.Impulse);
 	}
+
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -28,6 +28,14 @@ public class HookScript : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space)) 
 		{
 			wasPressed = true;
+		}
+
+		if (wasPressed == true)
+		{
+			GetComponent<Collider2D>().enabled = true;
+			GetComponent<Rigidbody2D>().isKinematic = false;
+			GetComponent<Rigidbody2D> ().AddRelativeForce (new Vector2(-90f, 0), ForceMode2D.Impulse);
+			wasPressed = false;
 		}
 	}
 

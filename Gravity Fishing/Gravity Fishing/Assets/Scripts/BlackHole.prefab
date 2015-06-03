@@ -41,7 +41,7 @@ GameObject:
   - 95: {fileID: 9562494}
   - 114: {fileID: 11484526}
   m_Layer: 0
-  m_Name: Blackhole
+  m_Name: BlackHole
   m_TagString: BlackHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gravity: {fileID: 0}
   m_particles: {fileID: 0}
-  anim: {fileID: 0}
+  m_hook: {fileID: 0}
+  min_radius: 0
+  mid_radius: 0
+  max_radius: 0
+  m_forceweak: 0
+  m_forcemoderate: 0
+  m_forceStrong: 0
+  Distance: 0
+  m_Force: 0
+  m_dead: 0
+  timer: 0
+  ForceDir: {x: 0, y: 0, z: 0}
 --- !u!137 &13721752
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

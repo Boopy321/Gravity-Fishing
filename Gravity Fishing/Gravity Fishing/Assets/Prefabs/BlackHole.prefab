@@ -47,6 +47,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &124918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 473746}
+  - 58: {fileID: 5879804}
+  - 114: {fileID: 11447002}
+  m_Layer: 0
+  m_Name: Hole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &131398
 GameObject:
   m_ObjectHideFlags: 1
@@ -168,6 +185,7 @@ GameObject:
   - 23: {fileID: 2360490}
   - 58: {fileID: 5850764}
   - 250: {fileID: 25066696}
+  - 114: {fileID: 11442352}
   m_Layer: 0
   m_Name: BlackHole
   m_TagString: Planet
@@ -279,6 +297,7 @@ Transform:
   m_Children:
   - {fileID: 407464}
   - {fileID: 429902}
+  - {fileID: 473746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &461256
@@ -293,6 +312,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 442690}
   m_RootOrder: 1
+--- !u!4 &473746
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124918}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 451302}
+  m_RootOrder: 2
 --- !u!4 &485076
 Transform:
   m_ObjectHideFlags: 1
@@ -405,6 +436,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2
+--- !u!58 &5879804
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124918}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .150000006
 --- !u!111 &11102692
 Animation:
   m_ObjectHideFlags: 1
@@ -445,6 +489,29 @@ MonoBehaviour:
   m_dead: 0
   timer: 0
   ForceDir: {x: 0, y: 0, z: 0}
+--- !u!114 &11442352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7ca05ce98f77041b2195f75bc50099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11447002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d510db6d74f7424eaa13f75b2cd66d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackhole: {fileID: 197926}
 --- !u!137 &13768364
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -494,7 +561,7 @@ PointEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_ForceMagnitude: -20
+  m_ForceMagnitude: -130
   m_ForceVariation: 0
   m_DistanceScale: 1
   m_Drag: 0
