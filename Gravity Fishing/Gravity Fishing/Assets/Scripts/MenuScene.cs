@@ -6,16 +6,20 @@ public class MenuScene : MonoBehaviour {
 
 	public Button play;
 
-	void start()
+	//void start()
+	//{
+	//	play.onClick.AddListener (() => {
+	//		Switch ();});
+	//
+	//}
+	//
+	//void Switch()
+	//{
+	//	Application.LoadLevel ("Jarrods");
+	//}
+
+	public void ChangetoScene(string scenetoChangeTo)
 	{
-		play.onClick.AddListener (() => {
-			Switch ();});
-
-	}
-
-
-	void Switch()
-	{
-		Application.LoadLevel ("Jarrods");
+		Application.LoadLevel(scenetoChangeTo);
 	}
 }
